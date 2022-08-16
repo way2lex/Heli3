@@ -21,17 +21,17 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...💤"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⛔️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
-    STATUS_CHECKING = "CheckingUp...📝"
-    STATUS_SEEDING = "Seeding...🌧"
+    STATUS_UPLOADING = "ᴜᴘʟᴏᴀᴅɪɴɢ...📤"
+    STATUS_DOWNLOADING = "ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ...📥"
+    STATUS_CLONING = "ᴄʟᴏɴɪɴɢ...♻️"
+    STATUS_WAITING = "ǫᴜᴇᴜᴇᴅ...💤"
+    STATUS_FAILED = "ғᴀɪʟᴇᴅ 🚫. ᴄʟᴇᴀɴɪɴɢ ᴅᴏᴡɴʟᴏᴀᴅs..."
+    STATUS_PAUSE = "ᴘᴀᴜsᴇᴅ...⛔️"
+    STATUS_ARCHIVING = "ᴀʀᴄʜɪᴠɪɴɢ...🔐"
+    STATUS_EXTRACTING = "ᴇxᴛʀᴀᴄᴛɪɴɢ...📂"
+    STATUS_SPLITTING = "sᴘʟɪᴛᴛɪɴɢ...✂️"
+    STATUS_CHECKING = "ᴄʜᴇᴄᴋɪɴɢ ᴜᴘ...📝"
+    STATUS_SEEDING = "sᴇᴇᴅɪɴɢ...🌧"
 
 class EngineStatus:
     STATUS_ARIA = "Aria2c"
@@ -183,8 +183,8 @@ def get_readable_message():
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"<b>CPU:</b> {cpu_percent()}% | <b>FREE:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
-        bmsg += f"\n<b>RAM:</b> {virtual_memory().percent}% | <b>UPTIME:</b> {get_readable_time(time() - botStartTime)}"
+        bmsg = f"<b>ᴄᴘᴜ:</b> {cpu_percent()}% | <b>ғʀᴇᴇ:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
+        bmsg += f"\n<b>ʀᴀᴍ:</b> {virtual_memory().percent}% | <b>ᴜᴘᴛɪᴍᴇ:</b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
         upspeed_bytes = 0
         for download in list(download_dict.values()):
@@ -201,14 +201,14 @@ def get_readable_message():
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
         bmsg += f"\n<b>DL:</b> {get_readable_file_size(dlspeed_bytes)}/s | <b>UL:</b> {get_readable_file_size(upspeed_bytes)}/s"
         buttons = ButtonMaker()
-        buttons.sbutton("Statistics", str(FOUR))
+        buttons.sbutton("sᴛᴀᴛɪsᴛɪᴄs", str(FOUR))
         sbutton = InlineKeyboardMarkup(buttons.build_menu(1))
         if STATUS_LIMIT is not None and tasks > STATUS_LIMIT:
             buttons = ButtonMaker()
-            buttons.sbutton("Previous", "status pre")
+            buttons.sbutton("ᴘʀᴇᴠɪᴏᴜs", "status pre")
             buttons.sbutton(f"{PAGE_NO}/{pages}", str(THREE))
-            buttons.sbutton("Next", "status nex")
-            buttons.sbutton("Statistics", str(FOUR))
+            buttons.sbutton("ɴᴇxᴛ", "status nex")
+            buttons.sbutton("sᴛᴀᴛɪsᴛɪᴄs", str(FOUR))
             button = InlineKeyboardMarkup(buttons.build_menu(3))
             return msg + bmsg, button
         return msg + bmsg, sbutton
