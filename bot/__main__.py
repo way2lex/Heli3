@@ -37,37 +37,36 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Up:</b> {sent} | '\
-            f'<b>Down:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}% | '\
-            f'<b>RAM:</b> {mem_p}% | '\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Total Memory:</b> {mem_t}\n'\
-            f'<b>Free:</b> {mem_a} | '\
-            f'<b>Used:</b> {mem_u}\n\n'
+    stats = f'<b>ᴄᴏᴍᴍɪᴛ ᴅᴀᴛᴇ:</b> {last_commit}\n\n'\
+            f'<b>ʙᴏᴛ ᴜᴘᴛɪᴍᴇ:</b> {currentTime}\n\n'\
+            f'<b>ᴛᴏᴛᴀʟ ᴅɪsᴋ sᴘᴀᴄᴇ:</b> {total}\n'\
+            f'<b>ᴜsᴇᴅ:</b> {used} | <b>ғʀᴇᴇ:</b> {free}\n\n'\
+            f'<b>ᴜᴘ:</b> {sent} | '\
+            f'<b>ᴅᴏᴡɴ:</b> {recv}\n\n'\
+            f'<b>ᴄᴘᴜ:</b> {cpuUsage}% | '\
+            f'<b>ʀᴀᴍ:</b> {mem_p}% | '\
+            f'<b>ᴅɪsᴋ:</b> {disk}%\n\n'\
+            f'<b>ᴛᴏᴛᴀʟ ᴍᴇᴍᴏʀʏ:</b> {mem_t}\n'\
+            f'<b>ғʀᴇᴇ:</b> {mem_a} | '\
+            f'<b>ᴜsᴇᴅ:</b> {mem_u}\n\n'
     sendMessage(stats, context.bot, update.message)
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/arshsisodiya/helios-mirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("ᴄᴏɴᴛᴀᴄᴛ", "https://t.me/Vendetta_Vengnace")
+    buttons.buildbutton("sᴍᴛʜ ᴜsᴇғᴜʟʟ", "https://youtu.be/gFQWJ4ftt48")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+ᴛʜɪs ᴍɪʀʀᴏʀ ʙᴏᴛ ʜᴀs ʙᴇᴇɴ ᴍᴀᴅᴇ ᴛᴏ ʙᴇ ᴜsᴇᴅ ᴡɪsᴇʟʏ.ᴘʟᴇᴀsᴇ ᴅᴏ ɴᴏᴛ ᴀʙᴜsᴇ ᴛʜᴇ sᴇʀᴠɪᴄᴇ.
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ. ᴅᴇʟᴇᴛᴇ ᴄʜᴀᴛ ɴᴏᴡ', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("ʀᴇsᴛᴀʀᴛɪɴɢ....", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     clean_all()
@@ -81,7 +80,7 @@ def restart(update, context):
 
 def ping(update, context):
     start_time = int(round(time() * 1000))
-    reply = sendMessage("Starting Ping", context.bot, update.message)
+    reply = sendMessage("ʜᴏʟᴅ ᴏɴ", context.bot, update.message)
     end_time = int(round(time() * 1000))
     editMessage(f'{end_time - start_time} ms', reply)
 
@@ -185,16 +184,16 @@ sudo_help_string = f'''<br><br><b> Sudo/Owner Only Commands </b><br><br>
 <b>/{BotCommands.RmleechlogCommand}</b>: Remove Leech Log
 '''
 help_string = f'''
-Hei, Need Help!!
+ʟᴏᴏᴋs ʟɪᴋᴇ sᴏᴍᴇᴏɴᴇ ɴᴇᴇᴅs ʜᴇʟᴘ
 '''
 help = telegraph.create_page(
-        title='Helios-Mirror Help',
+        title='sᴘʏ x ᴍɪʀʀᴏʀ ʜᴇʟᴘ',
         content=help_string_telegraph + sudo_help_string,
     )["path"]
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Click Here", f"https://telegra.ph/{help}")
+    button.buildbutton("ᴄʟɪᴄᴋ ʜᴇʀᴇ", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
