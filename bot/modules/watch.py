@@ -31,8 +31,8 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
             uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
             botstart = f"http://t.me/{b_uname}"
             buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"Dear {uname},\n\n<b>I found that you haven't started me in PM (Private Chat) yet.</b>\n\n" \
-                        f"From now on i will give link and leeched files in PM and log channel only"
+            startwarn = f"ᴀʜʜ {uname},\n\n<b>sᴇᴇᴍs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴᴛ ᴛᴀʟᴋᴇᴅ ᴍᴇ ɪɴ ᴘʀɪᴠᴀᴛᴇ [ᴘᴍ] ʏᴇᴛ.</b>\n\n" \
+                        f"ғʀᴏᴍ ɴᴏᴡ ᴏɴ ɪ ᴡɪʟʟ ɢɪᴠᴇ ʟɪɴᴋ ᴀɴᴅ ʟᴇᴇᴄʜᴇᴅ ғɪʟᴇs ɪɴ ᴘᴍ ᴀɴᴅ ʟᴏɢs ᴏɴʟʏ."
             message = sendMarkup(startwarn, bot, message, InlineKeyboardMarkup(buttons.build_menu(2)))
             Thread(target=auto_delete_message, args=(bot, message, message)).start()
             return
@@ -117,7 +117,7 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
         buttons.sbutton("Cancel", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(3))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args]
-        bmsg = sendMarkup('Choose Playlist Videos Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('ᴄʜᴏᴏsᴇ ᴘʟᴀʏʟɪsᴛ ᴠɪᴅᴇᴏs ǫᴜᴀʟɪᴛʏ:', bot, message, YTBUTTONS)
     else:
         formats = result.get('formats')
         formats_dict = {}
@@ -166,7 +166,7 @@ def _watch(bot, message, isZip=False, isLeech=False, multi=0):
         buttons.sbutton("Cancel", f"qu {msg_id} cancel")
         YTBUTTONS = InlineKeyboardMarkup(buttons.build_menu(2))
         listener_dict[msg_id] = [listener, user_id, link, name, YTBUTTONS, args, formats_dict]
-        bmsg = sendMarkup('Choose Video Quality:', bot, message, YTBUTTONS)
+        bmsg = sendMarkup('ᴄʜᴏᴏsᴇ ᴠɪᴅᴇᴏ ǫᴜᴀʟɪᴛʏ:', bot, message, YTBUTTONS)
 
     Thread(target=_auto_cancel, args=(bmsg, msg_id)).start()
     Thread(target=auto_delete_upload_message, args=(bot, message, bmsg)).start()
