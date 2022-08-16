@@ -414,7 +414,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             b_uname = bot_d.username
             uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
             botstart = f"http://t.me/{b_uname}"
-            buttons.buildbutton("Click Here to Start Me", f"{botstart}")
+            buttons.buildbutton("ʟᴇᴛs ɢᴇᴛ sᴛᴀʀᴛᴇᴅ", f"{botstart}")
             startwarn = f"ᴀʜʜ {uname},\n\n<b>sᴇᴇᴍs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴᴛ ᴛᴀʟᴋᴇᴅ ᴍᴇ ɪɴ ᴘʀɪᴠᴀᴛᴇ [ᴘᴍ] ʏᴇᴛ.</b>\n\n" \
                         f"ғʀᴏᴍ ɴᴏᴡ ᴏɴ ɪ ᴡɪʟʟ ɢɪᴠᴇ ʟɪɴᴋ ᴀɴᴅ ʟᴇᴇᴄʜᴇᴅ ғɪʟᴇs ɪɴ ᴘᴍ ᴀɴᴅ ʟᴏɢs ᴏɴʟʏ."
             message = sendMarkup(startwarn, bot, message, InlineKeyboardMarkup(buttons.build_menu(2)))
