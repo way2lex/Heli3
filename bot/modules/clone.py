@@ -32,8 +32,8 @@ def _clone(message, bot, multi=0):
             b_uname = bot_d.username
             uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
             botstart = f"http://t.me/{b_uname}"
-            buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"Dear {uname},\n\n<b>I found that you haven't started me in PM (Private Chat) yet.</b>\n\nFrom now on i will give link and leeched files in PM and log channel only"
+            buttons.buildbutton("ʟᴇᴛs ɢᴇᴛ sᴛᴀʀᴛᴇᴅ", f"{botstart}")
+            startwarn = f"ᴀʜʜ {uname},\n\n<b>sᴇᴇᴍs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴᴛ ᴛᴀʟᴋᴇᴅ ᴍᴇ ɪɴ ᴘʀɪᴠᴀᴛᴇ [ᴘᴍ] ʏᴇᴛ.</b>\n\nғʀᴏᴍ ɴᴏᴡ ᴏɴ ɪ ᴡɪʟʟ ɢɪᴠᴇ ʟɪɴᴋ ᴀɴᴅ ʟᴇᴇᴄʜᴇᴅ ғɪʟᴇs ɪɴ ᴘᴍ ᴀɴᴅ ʟᴏɢs ᴏɴʟʏ."
             message = sendMarkup(startwarn, bot, message, InlineKeyboardMarkup(buttons.build_menu(2)))
             Thread(target=auto_delete_message, args=(bot, message, message)).start()
             return
@@ -60,14 +60,14 @@ def _clone(message, bot, multi=0):
     is_appdrive = is_appdrive_link(link)
     if is_gdtot:
         try:
-            msg = sendMessage(f"Processing: <code>{link}</code>", bot, message)
+            msg = sendMessage(f"ᴘʀᴏᴄᴇssɪɴɢ: <code>{link}</code>", bot, message)
             link = gdtot(link)
             deleteMessage(bot, msg)
         except DirectDownloadLinkException as e:
             deleteMessage(bot, msg)
             return sendMessage(str(e), bot, message)
     if is_appdrive:
-        msg = sendMessage(f"Processing: <code>{link}</code>", bot, message)
+        msg = sendMessage(f"ᴘʀᴏᴄᴇssɪɴɢ: <code>{link}</code>", bot, message)
         try:
             apdict = appdrive(link)
             link = apdict.get('gdrive_link')
@@ -81,15 +81,15 @@ def _clone(message, bot, multi=0):
         if res != "":
             return sendMessage(res, bot, message)
         if STOP_DUPLICATE:
-            LOGGER.info('Checking File/Folder if already in Drive...')
+            LOGGER.info('ᴄʜᴇᴄᴋɪɴɢ ғɪʟᴇ/ғᴏʟᴅᴇʀ ɪғ ᴀʟʀᴇᴀᴅʏ ɪɴ ᴅʀɪᴠᴇ...')
             smsg, button = gd.drive_list(name, True, True)
             if smsg:
-                msg3 = "File/Folder is already available in Drive.\nHere are the search results:"
+                msg3 = "ғɪʟᴇ/ғᴏʟᴅᴇʀ ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴅʀɪᴠᴇ. ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ sᴇᴀʀᴄʜ ʀᴇsᴜʟᴛs:"
                 return sendMarkup(msg3, bot, message, button)
         if CLONE_LIMIT is not None:
-            LOGGER.info('Checking File/Folder Size...')
+            LOGGER.info('ᴄʜᴇᴄᴋɪɴɢ ғɪʟᴇ/ғᴏʟᴅᴇʀ sɪᴢᴇ...')
             if size > CLONE_LIMIT * 1024**3:
-                msg2 = f'Failed, Clone limit is {CLONE_LIMIT}GB.\nYour File/Folder size is {get_readable_file_size(size)}.'
+                msg2 = f'ᴄʟᴏɴᴇ ʟɪᴍɪᴛ ᴇxᴄᴇᴇᴅs {CLONE_LIMIT}GB.\nʏᴏᴜʀ ғɪʟᴇ/ғᴏʟᴅᴇʀ sɪᴢᴇ ɪs {get_readable_file_size(size)}.'
                 return sendMessage(msg2, bot, message)
         if multi > 1:
             sleep(4)
@@ -100,7 +100,7 @@ def _clone(message, bot, multi=0):
             sleep(4)
             Thread(target=_clone, args=(nextmsg, bot, multi)).start()
         if files <= 20:
-            msg = sendMessage(f"Cloning: <code>{link}</code>", bot, message)
+            msg = sendMessage(f"ᴄʟᴏɴɪɴɢ: <code>{link}</code>", bot, message)
             result, button = gd.clone(link)
             deleteMessage(bot, msg)
         else:
@@ -150,7 +150,7 @@ def _clone(message, bot, multi=0):
                 LOGGER.warning(e)
                 return
     else:
-        sendMessage('Send Gdrive or gdtot or appdrive link along with command or by replying to the link by command', bot, message)
+        sendMessage('sᴇɴᴅ ɢᴅʀɪᴠᴇ ᴏʀ ɢᴅᴛᴏᴛ ᴏʀ ᴀᴘᴘᴅʀɪᴠᴇ ʟɪɴᴋ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ ᴏʀ ʙʏ ʀᴇᴘʟʏɪɴɢ ᴛᴏ ᴛʜᴇ ʟɪɴᴋ ʙʏ ᴄᴏᴍᴍᴀɴᴅ', bot, message)
 
 @new_thread
 def cloneNode(update, context):
