@@ -548,7 +548,7 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"ᴜsᴇ /{BotCommands.CloneCommand} ᴛᴏ ᴄʟᴏɴᴇ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ғɪʟᴇ/ғᴏʟᴅᴇʀ"
+            gmsg = f"ᴜsᴇ /{BotCommands.CloneCommand} ᴛᴏ ᴄʟᴏɴᴇ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ғɪʟᴇ/ғᴏʟᴅᴇʀ\n\n"
             gmsg += f"ᴜsᴇ /{BotCommands.ZipMirrorCommand} ᴛᴏ ᴍᴀᴋᴇ ᴢɪᴘ ᴏғ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ғᴏʟᴅᴇʀ\n\n"
             gmsg += f"ᴜsᴇ /{BotCommands.UnzipMirrorCommand} ᴛᴏ ᴇxᴛʀᴀᴄᴛ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ᴀʀᴄʜɪᴠᴇᴅ ғɪʟᴇs"
             sendMessage(gmsg, bot, message)
