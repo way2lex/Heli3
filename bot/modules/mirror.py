@@ -225,12 +225,12 @@ class MirrorListener:
                     source_link = message_args[1]
                     if is_magnet(source_link):
                         link = telegraph.create_page(
-                        title='Helios-Mirror Source Link',
+                        title='sᴘʏ x ᴍɪʀʀᴏʀ ʟɪɴᴋ',
                         content=source_link,
                     )["path"]
-                        buttons.buildbutton(f"🔗 Source Link", f"https://telegra.ph/{link}")
+                        buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", f"https://telegra.ph/{link}")
                     else:
-                        buttons.buildbutton(f"🔗 Source Link", source_link)
+                        buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", source_link)
                 except Exception as e:
                     LOGGER.warning(e)
                 pass
@@ -241,12 +241,12 @@ class MirrorListener:
                             source_link = reply_text.strip()
                             if is_magnet(source_link):
                                 link = telegraph.create_page(
-                                    title='Helios-Mirror Source Link',
+                                    title='sᴘʏ x ᴍɪʀʀᴏʀ sᴏᴜʀᴄᴇ ʟɪɴᴋ',
                                     content=source_link,
                                 )["path"]
-                                buttons.buildbutton(f"🔗 Source Link", f"https://telegra.ph/{link}")
+                                buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", f"https://telegra.ph/{link}")
                             else:
-                                buttons.buildbutton(f"🔗 Source Link", source_link)
+                                buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", source_link)
                     except Exception as e:
                         LOGGER.warning(e)
                         pass
@@ -254,10 +254,10 @@ class MirrorListener:
                 bot_d = bot.get_me()
                 b_uname = bot_d.username
                 botstart = f"http://t.me/{b_uname}"
-                buttons.buildbutton("View file in PM", f"{botstart}")
-            msg += f'\n<b>Total Files: </b>{folders}'
+                buttons.buildbutton("ᴠɪᴇᴡ ғɪʟᴇ ɪɴ ᴘᴍ", f"{botstart}")
+            msg += f'\n<b>ᴛᴏᴛᴀʟ ғɪʟᴇs: </b>{folders}'
             if typ != 0:
-                msg += f'\n<b>Corrupted Files: </b>{typ}'
+                msg += f'\n<b>ᴄᴏʀʀᴜᴘᴛᴇᴅ ғɪʟᴇs: </b>{typ}'
             msg += f'\n<b>cc: </b>{self.tag}\n\n'
             if not files:
                 uploadmsg = sendMessage(msg, self.bot, self.message)
@@ -273,14 +273,14 @@ class MirrorListener:
                     uploadmsg = sendMarkup(msg + fmsg, self.bot, self.message, InlineKeyboardMarkup(buttons.build_menu(2)))
                     Thread(target=auto_delete_upload_message, args=(bot, self.message, uploadmsg)).start()
         else:
-            msg += f'\n\n<b>Type: </b>{typ}'
+            msg += f'\n\n<b>ᴛʏᴘᴇ: </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>SubFolders: </b>{folders}'
-                msg += f'\n<b>Files: </b>{files}'
+                msg += f'\n<b>sᴜʙғᴏʟᴅᴇʀs: </b>{folders}'
+                msg += f'\n<b>ғɪʟᴇs: </b>{files}'
             msg += f'\n\n<b>cc: </b>{self.tag}'
             buttons = ButtonMaker()
             link = short_url(link)
-            buttons.buildbutton("☁️ Drive Link", link)
+            buttons.buildbutton("⛅️ ᴅʀɪᴠᴇ ʟɪɴᴋ ⛅️", link)
             LOGGER.info(f'Done Uploading {name}')
             if INDEX_URL is not None:
                 url_path = rutils.quote(f'{name}')
@@ -288,14 +288,14 @@ class MirrorListener:
                 if ospath.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{name}'):
                     share_url += '/'
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("📂 ɪɴᴅᴇx ʟɪɴᴋ 📂", share_url)
                 else:
                     share_url = short_url(share_url)
-                    buttons.buildbutton("⚡ Index Link", share_url)
+                    buttons.buildbutton("📂 ɪɴᴅᴇx ʟɪɴᴋ 📂", share_url)
                     if VIEW_LINK:
                         share_urls = f'{INDEX_URL}/{url_path}?a=view'
                         share_urls = short_url(share_urls)
-                        buttons.buildbutton("🌐 View Link", share_urls)
+                        buttons.buildbutton("📎 ᴠɪᴇᴡ ʟɪɴᴋ 📎", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
@@ -307,16 +307,16 @@ class MirrorListener:
                     mesg = message_args[1]
                     if is_magnet(mesg):
                         link = telegraph.create_page(
-                            title='Helios-Mirror Source Link',
+                            title='sᴘʏ x ᴍɪʀʀᴏʀ sᴏᴜʀᴄᴇ ʟɪɴᴋ',
                             content=mesg,
                         )["path"]
-                        buttons.buildbutton(f"🔗 Source Link", f"https://telegra.ph/{link}")
+                        buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", f"https://telegra.ph/{link}")
                     elif is_url(mesg):
                         source_link = mesg
                         if source_link.startswith(("|", "pswd: ")):
                             pass
                         else:
-                            buttons.buildbutton(f"🔗 Source Link", source_link)
+                            buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", source_link)
                     else:
                         pass
                 except Exception as e:
@@ -329,12 +329,12 @@ class MirrorListener:
                         source_link = reply_text.strip()
                         if is_magnet(source_link):
                             link = telegraph.create_page(
-                                title='Helios-Mirror Source Link',
+                                title='sᴘʏ x ᴍɪʀʀᴏʀ sᴏᴜʀᴄᴇ ʟɪɴᴋ',
                                 content=source_link,
                             )["path"]
-                            buttons.buildbutton(f"🔗 Source Link", f"https://telegra.ph/{link}")
+                            buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", f"https://telegra.ph/{link}")
                         else:
-                            buttons.buildbutton(f"🔗 Source Link", source_link)
+                            buttons.buildbutton(f"🔗 sᴏᴜʀᴄᴇ ʟɪɴᴋ", source_link)
                 except Exception as e:
                     LOGGER.warning(e)
                     pass
@@ -415,8 +415,8 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
             uname = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
             botstart = f"http://t.me/{b_uname}"
             buttons.buildbutton("Click Here to Start Me", f"{botstart}")
-            startwarn = f"Dear {uname},\n\n<b>I found that you haven't started me in PM (Private Chat) yet.</b>\n\n" \
-                        f"From now on i will give link and leeched files in PM and log channel only"
+            startwarn = f"ᴀʜʜ {uname},\n\n<b>sᴇᴇᴍs ʟɪᴋᴇ ʏᴏᴜ ʜᴀᴠᴇɴᴛ ᴛᴀʟᴋᴇᴅ ᴍᴇ ɪɴ ᴘʀɪᴠᴀᴛᴇ [ᴘᴍ] ʏᴇᴛ.</b>\n\n" \
+                        f"ғʀᴏᴍ ɴᴏᴡ ᴏɴ ɪ ᴡɪʟʟ ɢɪᴠᴇ ʟɪɴᴋ ᴀɴᴅ ʟᴇᴇᴄʜᴇᴅ ғɪʟᴇs ɪɴ ᴘᴍ ᴀɴᴅ ʟᴏɢs ᴏɴʟʏ."
             message = sendMarkup(startwarn, bot, message, InlineKeyboardMarkup(buttons.build_menu(2)))
             Thread(target=auto_delete_message, args=(bot, message, message)).start()
             return
@@ -491,15 +491,15 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
                 link = file.get_file().file_path
 
     if not is_url(link) and not is_magnet(link) and not ospath.exists(link):
-        help_msg = "<b>Send link along with command line:</b>"
+        help_msg = "<b>sᴇɴᴅ ʟɪɴᴋ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ ʟɪɴᴇ:</b>"
         help_msg += "\n<code>/command</code> {link} |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>By replying to link or file:</b>"
+        help_msg += "\n\n<b>ʙʏ ʀᴇᴘʟʏɪɴɢ ᴛᴏ ʟɪɴᴋ ᴏʀ ғɪʟᴇ:</b>"
         help_msg += "\n<code>/command</code> |newname pswd: xx [zip/unzip]"
-        help_msg += "\n\n<b>Direct link authorization:</b>"
+        help_msg += "\n\n<b>ᴅɪʀᴇᴄᴛ ʟɪɴᴋ ᴀᴜᴛʜᴏʀɪᴢᴀᴛɪᴏɴ:</b>"
         help_msg += "\n<code>/command</code> {link} |newname pswd: xx\nusername\npassword"
-        help_msg += "\n\n<b>Qbittorrent selection:</b>"
+        help_msg += "\n\n<b>ǫʙɪᴛᴛᴏʀʀᴇɴᴛ sᴇʟᴇᴄᴛɪᴏɴ:</b>"
         help_msg += "\n<code>/qbcommand</code> <b>s</b> {link} or by replying to {file/link}"
-        help_msg += "\n\n<b>Multi links only by replying to first link or file:</b>"
+        help_msg += "\n\n<b>ᴍᴜʟᴛɪ ʟɪɴᴋs ᴏɴʟʏ ʙʏ ʀᴇᴘʟʏɪɴɢ ᴛᴏ ғɪʀsᴛ ʟɪɴᴋ ᴏʀ ғɪʟᴇ:</b>"
         help_msg += "\n<code>/command</code> 10(number of links/files)"
         return sendMessage(help_msg, bot, message)
 
@@ -548,9 +548,9 @@ def _mirror(bot, message, isZip=False, extract=False, isQbit=False, isLeech=Fals
 
     if is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
-            gmsg = f"Use /{BotCommands.CloneCommand} to clone Google Drive file/folder\n\n"
-            gmsg += f"Use /{BotCommands.ZipMirrorCommand} to make zip of Google Drive folder\n\n"
-            gmsg += f"Use /{BotCommands.UnzipMirrorCommand} to extracts Google Drive archive file"
+            gmsg = f"ᴜsᴇ /{BotCommands.CloneCommand} ᴛᴏ ᴄʟᴏɴᴇ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ғɪʟᴇ/ғᴏʟᴅᴇʀ"
+            gmsg += f"ᴜsᴇ /{BotCommands.ZipMirrorCommand} ᴛᴏ ᴍᴀᴋᴇ ᴢɪᴘ ᴏғ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ғᴏʟᴅᴇʀ\n\n"
+            gmsg += f"ᴜsᴇ /{BotCommands.UnzipMirrorCommand} ᴛᴏ ᴇxᴛʀᴀᴄᴛ ɢᴏᴏɢʟᴇ ᴅʀɪᴠᴇ ᴀʀᴄʜɪᴠᴇᴅ ғɪʟᴇs"
             sendMessage(gmsg, bot, message)
         else:
             Thread(target=add_gd_download, args=(link, listener, is_gdtot)).start()
