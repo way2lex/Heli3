@@ -57,20 +57,19 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/arshsisodiya/helios-mirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("ᴄᴏɴᴛᴀᴄᴛ", "https://t.me/Vendetta_Vengnace")
+    buttons.buildbutton("sᴍᴛʜ ᴜsᴇғᴜʟʟ", "https://youtu.be/gFQWJ4ftt48")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
+ᴛʜɪs ᴍɪʀʀᴏʀ ʙᴏᴛ ʜᴀs ʙᴇᴇɴ ᴍᴀᴅᴇ ᴛᴏ ʙᴇ ᴜsᴇᴅ ᴡɪsᴇʟʏ.ᴘʟᴇᴀsᴇ ᴅᴏ ɴᴏᴛ ᴀʙᴜsᴇ ᴛʜᴇ sᴇʀᴠɪᴄᴇ.
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update.message, reply_markup)
+        sendMarkup('ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ. ᴅᴇʟᴇᴛᴇ ᴄʜᴀᴛ ɴᴏᴡ', context.bot, update.message, reply_markup)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update.message)
+    restart_message = sendMessage("ʀᴇsᴛᴀʀᴛɪɴɢ....", context.bot, update.message)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -189,16 +188,16 @@ sudo_help_string = f'''<br><br><b> Sudo/Owner Only Commands </b><br><br>
 <b>/{BotCommands.RmleechlogCommand}</b>: Remove Leech Log
 '''
 help_string = f'''
-Hei, Need Help!!
+ʟᴏᴏᴋs ʟɪᴋᴇ sᴏᴍᴇᴏɴᴇ ɴᴇᴇᴅs ʜᴇʟᴘ
 '''
 help = telegraph.create_page(
-        title='Helios-Mirror Help',
+        title='sᴘʏ x ᴍɪʀʀᴏʀ ʜᴇʟᴘ',
         content=help_string_telegraph + sudo_help_string,
     )["path"]
 
 def bot_help(update, context):
     button = ButtonMaker()
-    button.buildbutton("Click Here", f"https://telegra.ph/{help}")
+    button.buildbutton("ᴄʟɪᴄᴋ ʜᴇʀᴇ", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update.message, reply_markup)
 
