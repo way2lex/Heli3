@@ -56,9 +56,9 @@ def torser(update, context):
     elif len(key) == 1 and SEARCH_API_LINK is None:
         sendMessage("sᴇɴᴅ ᴀ sᴇᴀʀᴄʜ ᴋᴇʏ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ", context.bot, update.message)
     elif len(key) == 1:
-        buttons.sbutton('Trending', f"torser {user_id} apitrend")
-        buttons.sbutton('Recent', f"torser {user_id} apirecent")
-        buttons.sbutton("Cancel", f"torser {user_id} cancel")
+        buttons.sbutton('ᴛʀᴇɴᴅɪɴɢ', f"torser {user_id} apitrend")
+        buttons.sbutton('ʀᴇᴄᴇɴᴛ', f"torser {user_id} apirecent")
+        buttons.sbutton("ᴄᴀɴᴄᴇʟ", f"torser {user_id} cancel")
         button = InlineKeyboardMarkup(buttons.build_menu(2))
         sendMarkup("sᴇɴᴅ ᴀ sᴇᴀʀᴄʜ ᴋᴇʏ ᴀʟᴏɴɢ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ", context.bot, update.message, button)
     elif SEARCH_API_LINK is not None and SEARCH_PLUGINS is not None:
@@ -90,11 +90,11 @@ def torserbut(update, context):
     elif data[2].startswith('api'):
         query.answer()
         button = _api_buttons(user_id, data[2])
-        editMessage('Choose site:', message, button)
+        editMessage('ᴄʜᴏᴏsᴇ sɪᴛᴇ:', message, button)
     elif data[2] == 'plugin':
         query.answer()
         button = _plugin_buttons(user_id)
-        editMessage('Choose site:', message, button)
+        editMessage('ᴄʜᴏᴏsᴇ sɪᴛᴇ:', message, button)
     elif data[2] != "cancel":
         query.answer()
         site = data[2]
@@ -139,19 +139,19 @@ def _search(key, site, message, method):
             resp = rget(api)
             search_results = resp.json()
             if "error" in search_results.keys():
-                return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i>", message)
-            msg = f"<b>Found {min(search_results['total'], TELEGRAPH_LIMIT)}</b>"
+                return editMessage(f"ɴᴏ ʀᴇsᴜʟᴛ ғᴏᴜɴᴅ ғᴏʀ <i>{key}</i>\nᴛᴏʀʀᴇɴᴛ sɪᴛᴇ:- <i>{SITES.get(site)}</i>", message)
+            msg = f"<b>ғᴏᴜɴᴅ {min(search_results['total'], TELEGRAPH_LIMIT)}</b>"
             if method == 'apitrend':
                 msg += f" <b>trending result(s)\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
             elif method == 'apirecent':
-                msg += f" <b>recent result(s)\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
+                msg += f" <b>ʀᴇᴄᴇɴᴛ ʀᴇsᴜʟᴛ(s)\nᴛᴏʀʀᴇɴᴛ sɪᴛᴇ:- <i>{SITES.get(site)}</i></b>"
             else:
-                msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{SITES.get(site)}</i></b>"
+                msg += f" <b>ʀᴇsᴜʟᴛ(s) for <i>{key}</i>\nᴛᴏʀʀᴇɴᴛ sɪᴛᴇ:- <i>{SITES.get(site)}</i></b>"
             search_results = search_results['data']
         except Exception as e:
             return editMessage(str(e), message)
     else:
-        LOGGER.info(f"PLUGINS Searching: {key} from {site}")
+        LOGGER.info(f"ᴘʟᴜɢɪɴs sᴇᴀʀᴄʜɪɴɢ: {key} ғʀᴏᴍ {site}")
         client = get_client()
         search = client.search_start(pattern=str(key), plugins=str(site), category='all')
         search_id = search.id
@@ -164,9 +164,9 @@ def _search(key, site, message, method):
         search_results = dict_search_results.results
         total_results = dict_search_results.total
         if total_results == 0:
-            return editMessage(f"No result found for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i>", message)
-        msg = f"<b>Found {min(total_results, TELEGRAPH_LIMIT)}</b>"
-        msg += f" <b>result(s) for <i>{key}</i>\nTorrent Site:- <i>{site.capitalize()}</i></b>"
+            return editMessage(f"ɴᴏ ʀᴇsᴜʟᴛ ғᴏᴜɴᴅ ғᴏʀ <i>{key}</i>\nᴛᴏʀʀᴇɴᴛ sɪᴛᴇ:- <i>{site.capitalize()}</i>", message)
+        msg = f"<b>ғᴏᴜɴᴅ {min(total_results, TELEGRAPH_LIMIT)}</b>"
+        msg += f" <b>ʀᴇsᴜʟᴛ(s) ғᴏʀ <i>{key}</i>\nᴛᴏʀʀᴇɴᴛ sɪᴛᴇ:- <i>{site.capitalize()}</i></b>"
     link = _getResult(search_results, key, message, method)
     buttons = button_build.ButtonMaker()
     buttons.buildbutton("🔎 VIEW", link)
@@ -184,7 +184,7 @@ def _getResult(search_results, key, message, method):
     elif method == 'apitrend':
         msg = "<h4>API Trending Results</h4>"
     else:
-        msg = f"<h4>PLUGINS Search Result(s) For {key}</h4>"
+        msg = f"<h4>ᴘʟᴜɢɪɴs sᴇᴀʀᴄʜɪɴ ʀᴇsᴜʟᴛ(s) For {key}</h4>"
     for index, result in enumerate(search_results, start=1):
         if method.startswith('api'):
             if 'name' in result.keys():
